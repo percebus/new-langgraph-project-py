@@ -1,5 +1,20 @@
-from retrieval_graph.configuration import Configuration
+import os
+
+from react_agent.context import Context
 
 
-def test_configuration_from_none() -> None:
-    Configuration.from_runnable_config({"user_id": "foo"})
+def test_context_init() -> None:
+    context = Context(model="openai/gpt-4o-mini")
+    assert context.model == "openai/gpt-4o-mini"
+
+
+def test_context_init_with_env_vars() -> None:
+    os.environ["MODEL"] = "openai/gpt-4o-mini"
+    context = Context()
+    assert context.model == "openai/gpt-4o-mini"
+
+
+def test_context_init_with_env_vars_and_passed_values() -> None:
+    os.environ["MODEL"] = "openai/gpt-4o-mini"
+    context = Context(model="openai/gpt-5o-mini")
+    assert context.model == "openai/gpt-5o-mini"

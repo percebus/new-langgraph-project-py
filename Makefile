@@ -11,7 +11,7 @@ test:
 
 integration_tests:
 	python -m pytest tests/integration_tests 
-	
+
 test_watch:
 	python -m ptw --snapshot-update --now . -- -vv tests/unit_tests
 
