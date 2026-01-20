@@ -1,18 +1,26 @@
 [project]
-name = "agent"
+name = "retrieval-graph"
 version = "0.0.1"
-description = "Starter template for making a new agent LangGraph."
+description = "Starter template for making a custom retrieval graph in LangGraph."
 authors = [
     { name = "William Fu-Hinthorn", email = "13333726+hinthornw@users.noreply.github.com" },
 ]
-readme = "README.md"
 license = { text = "MIT" }
+readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "langgraph>=1.0.0",
+    "langgraph>=1.0.0,<2.0.0",
+    "langchain-openai>=0.1.22",
+    "langchain-anthropic>=0.1.23",
+    "langchain>=0.2.14",
+    "langchain-fireworks>=0.1.7",
     "python-dotenv>=1.0.1",
+    "langchain-elasticsearch>=0.2.2",
+    "langchain-pinecone>=0.1.3",
+    "msgspec>=0.18.6",
+    "langchain-mongodb>=0.1.9",
+    "langchain-cohere>=0.2.4",
 ]
-
 
 [project.optional-dependencies]
 dev = ["mypy>=1.11.1", "ruff>=0.6.1"]
@@ -22,10 +30,10 @@ requires = ["setuptools>=73.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = ["langgraph.templates.agent", "agent"]
+packages = ["langgraph.templates.retrieval_graph", "retrieval_graph"]
 [tool.setuptools.package-dir]
-"langgraph.templates.agent" = "src/agent"
-"agent" = "src/agent"
+"langgraph.templates.retrieval_graph" = "src/retrieval_graph"
+"retrieval_graph" = "src/retrieval_graph"
 
 
 [tool.setuptools.package-data]
@@ -58,8 +66,6 @@ convention = "google"
 [dependency-groups]
 dev = [
     "anyio>=4.7.0",
-    "langgraph-cli[inmem]>=0.4.7",
-    "mypy>=1.13.0",
+    "langgraph-cli[inmem]>=0.1.71",
     "pytest>=8.3.5",
-    "ruff>=0.8.2",
 ]
